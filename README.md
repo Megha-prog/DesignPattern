@@ -1,3 +1,3 @@
 # DesignPattern
 
-PersonBuilder is Assignment with builderperson output
+PersonBuilder is Assignment with BuilderDesign output
