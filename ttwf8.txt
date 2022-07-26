@@ -1,0 +1,132 @@
+package observer;
+
+public class ETNotificationApp {
+
+    public static void main(String[] args) {
+        
+        Channel etchannel = new Channel();
+        initialiseSubscriber(etchannel);
+        
+        etchannel.upload("Welcome to Economic Times");
+
+    }
+    
+    
+    private static void initialiseSubscriber(Channel etchannel) {
+        
+        
+        Subscriber sub1 = new Subscriber("Nitesh");
+        Subscriber sub2 = new Subscriber("Nkdebug");
+        Subscriber sub3 = new Subscriber("Rishav");
+        Subscriber sub4 = new Subscriber("Ankur");
+        Subscriber sub5 = new Subscriber("Megha");
+        Subscriber sub6 = new Subscriber("Nishu");
+        
+        etchannel.subscribe(sub1);
+        etchannel.subscribe(sub2);
+        etchannel.subscribe(sub3);
+        etchannel.subscribe(sub4);
+        etchannel.subscribe(sub5);
+        etchannel.subscribe(sub6);
+
+        
+        sub1.subscribeChannel(etchannel);
+        sub2.subscribeChannel(etchannel);
+        sub3.subscribeChannel(etchannel);
+        sub4.subscribeChannel(etchannel);
+        sub5.subscribeChannel(etchannel);
+        sub6.subscribeChannel(etchannel);
+        
+    }
+
+}
+
+
+package observer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Channel implements Subject{
+
+    
+    String title;
+    List<Subscriber> subscriberList = new ArrayList<>();
+    
+    
+    public // add subscriber
+    void subscribe(Subscriber subscriber) {
+        subscriberList.add(subscriber);
+    }
+    
+    public void unsubscribe(Subscriber subscriber) {
+        subscriberList.remove(subscriber);
+    }
+    
+    
+    public void notifySubscriber() {
+        for(Subscriber subs: subscriberList) {
+            subs.update();
+        }
+    }
+    
+    void upload(String title) {
+        this.title = title;
+        this.notifySubscriber();
+    }
+    
+    
+    
+    
+}
+
+
+package observer;
+
+public interface Subject {
+    
+    void subscribe(Subscriber subscriber);
+    
+    void unsubscribe(Subscriber subscriber);
+    
+    void notifySubscriber();
+    
+
+}
+
+
+package observer;
+
+public class Subscriber {
+    
+    private String name;
+    private Channel channel;
+    
+    
+    public Subscriber(String name) {
+        super();
+        this.name = name;
+    }
+
+
+    public void update() {
+        System.out.println("Hi " + name + " Video is uploaded");
+    }
+    
+    
+    public void subscribeChannel(Channel channel) {
+        this.channel = channel;
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+

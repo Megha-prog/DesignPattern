@@ -1,0 +1,130 @@
+package org.example.srp;
+
+import java.math.BigDecimal;
+
+public class BankService {
+
+
+    //deposit
+    public BigDecimal deposit(BigDecimal amount, String accountNo) {
+        // deposit amount in mentioned account
+        return BigDecimal.ZERO;
+    }
+
+    public BigDecimal withdraw(BigDecimal amount, String accountNo) {
+        // withdraw amount in mentioned account
+        return BigDecimal.ZERO;
+    }
+
+
+
+
+}
+
+
+package org.example.srp;
+
+public class LoanService {
+
+    public void getLoanInterestInfo(String loanType) {
+
+        if(loanType.equals("Education Loan")) {
+            // 10%
+        } else if(loanType.equals("PersonalLoan")) {
+            // 15%
+        }
+        else if(loanType.equals("HomeLoan")) {
+            // 8%
+        } else  {
+            // default usecase..
+        }
+
+        // gold loan as well
+    }
+
+}
+
+
+
+package org.example.srp;
+
+public class NotificationService {
+    public void sendOTP(String medium) {
+        if(medium.equals("Email")) {
+            // send email API -> Java Mail API
+        } else {
+
+            // twilio API for sending SMS
+        }
+    }
+}
+
+
+
+package org.example.srp;
+
+public class PrinterService {
+
+    public void printPassBook() {
+        // update all bank statements in passbook
+    }
+}
+
+
+
+package org.example.osp;
+
+public class WhatsAppNotificationService implements NotificationService{
+    @Override
+    public void sendOTP(String medium) {
+        // using WhatsApp API
+    }
+
+    @Override
+    public void sendTransactionNotification(String medium) {
+        // using WhatsApp API
+    }
+}
+
+
+package org.example.osp;
+
+public interface NotificationService {
+
+    void sendOTP(String medium);
+    void sendTransactionNotification(String medium);
+}
+
+
+
+
+package org.example.osp;
+
+public class MobileNotification implements NotificationService{
+
+    @Override
+    public void sendOTP(String medium) {
+        // twillio API
+    }
+
+    @Override
+    public void sendTransactionNotification(String medium) {
+        // twillio API
+    }
+}
+
+
+package org.example.osp;
+
+public class EmailNotificationService implements NotificationService{
+
+    @Override
+    public void sendOTP(String medium) {
+            // using email by JAVA MAIL API
+    }
+
+    @Override
+    public void sendTransactionNotification(String medium) {
+            // same thing using email
+    }
+}
