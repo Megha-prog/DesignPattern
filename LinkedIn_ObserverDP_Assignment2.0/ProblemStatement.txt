@@ -1,0 +1,15 @@
+2. [LinkedIn]
+User nkdebug [Subject] -> Followers [Observer]
+
+[publisherp[subject]-subscriber[observer] model]
+
+
+observer object[Subscriber] -> register/unregister at any point of time..[loosely coupled]
+
+
+
+subject [main user is nkdebug] (if there is any change in subject, every observer/user will be notified)
+
+-> Observer 1 [User 1]
+-> Observer 2 [User 2]
+-> Observer 3 [User 3]
